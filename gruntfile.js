@@ -1,5 +1,5 @@
 module.exports = function(grunt){
-	var scripts = { src: '*.js' };
+	var scripts = { src: 'modular.js' };
 
 	grunt.initConfig({
 		complexity: {
