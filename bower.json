@@ -1,0 +1,17 @@
+{
+  "name": "modular",
+  "main": "modular.js",
+  "version": "0.0.1",
+  "authors": [
+    "Alexey Raspopov"
+  ],
+  "description": "Simple CommonJS Module/1.1 proposal implementation",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
