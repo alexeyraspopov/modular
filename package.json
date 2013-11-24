@@ -1,6 +1,6 @@
 {
   "name": "modular",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Simple CommonJS Module/1.1 proposal implementation",
   "main": "modular.js",
   "devDependencies": {
