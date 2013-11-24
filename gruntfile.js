@@ -1,6 +1,4 @@
 module.exports = function(grunt){
-	var scripts = { src: 'modular.js' };
-
 	grunt.initConfig({
 		bump: {
 			options: {
@@ -12,10 +10,10 @@ module.exports = function(grunt){
 			}
 		},
 		complexity: {
-			target: scripts
+			target: { src: 'modular.js' }
 		},
 		jshint: {
-			target: scripts
+			target: { src: 'modular.js' }
 		},
 		uglify: {
 			target: {
