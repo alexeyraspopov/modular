@@ -51,7 +51,7 @@
 		return request.response;
 	}
 
-	function extenstion(path){
+	function extension(path){
 		return path.replace(/\/+/g, '/').replace(/(\.\w+$|$)/, function(extension){
 			return extension || '.js';
 		});
@@ -59,7 +59,7 @@
 
 	function setupAliases(map){
 		Object.keys(map).forEach(function(identifier){
-			alias[identifier] = extenstion(map[identifier]);
+			alias[identifier] = extension(map[identifier]);
 		});
 	}
 
