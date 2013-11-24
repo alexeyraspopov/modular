@@ -1,6 +1,6 @@
 (function(){
 	'use strict';
-	var cache = {}, alias = {};
+	var cache = {}, alias = {}, link = document.createElement('a');
 
 	function require(identifier){
 		return cache[identifier] || (cache[identifier] = module(identifier));
@@ -18,8 +18,6 @@
 	}
 
 	function resolve(src, dest){
-		var link = document.createElement('a');
-
 		link.href = dir(src) + dest;
 
 		return link.pathname;
@@ -27,7 +25,7 @@
 
 	function injection(path){
 		return function(identifier){
-			return require(alias[identifier] || resolve(path, identifier));
+			return require(alias[identifier] || resolve(path, extension(identifier)));
 		};
 	}
 
@@ -53,7 +51,7 @@
 		return request.response;
 	}
 
-	function completePath(path){
+	function extenstion(path){
 		return path.replace(/\/+/g, '/').replace(/(\.\w+$|$)/, function(extension){
 			return extension || '.js';
 		});
@@ -61,7 +59,7 @@
 
 	function setupAliases(map){
 		Object.keys(map).forEach(function(identifier){
-			alias[identifier] = completePath(map[identifier]);
+			alias[identifier] = extenstion(map[identifier]);
 		});
 	}
 
