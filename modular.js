@@ -13,10 +13,16 @@
 		return (/\.json$/.test(path)) ? JSON.parse(code) : compile(code, path);
 	}
 
-	function resolve(src, dest){
-		console.log('-- resolve', src, dest);
+	function dir(path){
+		return path.replace(/\/[^\/]+$/, '/');
+	}
 
-		return dest;
+	function resolve(src, dest){
+		var link = document.createElement('a');
+
+		link.href = dir(src) + dest;
+
+		return link.pathname;
 	}
 
 	function injection(path){
@@ -25,11 +31,15 @@
 		};
 	}
 
+	function strict(code, path){
+		return ['//@ sourceURL=' + path, '"use strict";', code].join('\n');
+	}
+
 	function compile(code, path){
 		var module = { exports: {}, id: path };
 
 		/* jshint evil:true */
-		new Function('require', 'exports', 'module', code)(injection(path), module.exports, module);
+		new Function('require', 'exports', 'module', strict(code, path))(injection(path), module.exports, module);
 
 		return module.exports;
 	}
@@ -60,7 +70,7 @@
 	}
 
 	function setup(configFile){
-		var config = module(configFile);
+		var config = require(configFile);
 
 		setupAliases(config.alias || {});
 		setupScripts(config.start || []);
