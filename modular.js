@@ -9,18 +9,27 @@
 	function module(path){
 		var code = load(path);
 
+		// IDEA: use map for assicate extension with compile function
 		return (/\.json$/.test(path)) ? JSON.parse(code) : compile(code, path);
 	}
 
-	function injection(identifier){
-		return require(alias[identifier] || identifier);
+	function resolve(src, dest){
+		console.log('-- resolve', src, dest);
+
+		return dest;
+	}
+
+	function injection(path){
+		return function(identifier){
+			return require(alias[identifier] || resolve(path, identifier));
+		};
 	}
 
 	function compile(code, path){
 		var module = { exports: {}, id: path };
 
 		/* jshint evil:true */
-		new Function('require', 'exports', 'module', code)(injection, module.exports, module);
+		new Function('require', 'exports', 'module', code)(injection(path), module.exports, module);
 
 		return module.exports;
 	}
