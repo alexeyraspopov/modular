@@ -2,9 +2,9 @@
 
 ## Setup
 
-Include main script file. Set config file in `data-config` attribute.
+Include main script file. Set config file in `data-setup` attribute.
 
-    <script src="components/modular/modular.js" data-config="config.json"></script>
+    <script src="components/modular/modular.js" data-setup="config.json"></script>
 
 Simple config file should consists of aliases list and entry points.
 
@@ -14,6 +14,6 @@ Simple config file should consists of aliases list and entry points.
             "promise": "./components/promise/promise.js",
         },
         "start": [
-            "initial.js"
+            "./initial.js"
         ]
     }
