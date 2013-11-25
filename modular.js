@@ -1,8 +1,9 @@
 (function(){
 	'use strict';
-	var cache = {}, alias = {}, link = document.createElement('a');
+	var cache = {}, alias = {};
 
 	function require(identifier){
+		console.log('====', identifier, cache);
 		return cache[identifier] || (cache[identifier] = module(identifier));
 	}
 
@@ -18,9 +19,25 @@
 	}
 
 	function resolve(src, dest){
-		link.href = dir(src) + dest;
+		var name, item;
 
-		return link.pathname;
+		src = src.split(/\/+/).slice(0, -1);
+		dest = dest.split(/\/+/).filter(function(part){
+			return part !== '.';
+		});
+		name = dest.pop();
+
+		dest.forEach(function(part){
+			if(part === '..'){
+				src.pop();
+			}else{
+				src.push(part);
+			}
+		});
+
+		src.push(name);
+
+		return src.join('/');
 	}
 
 	function injection(path){
