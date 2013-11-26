@@ -3,7 +3,6 @@
 	var cache = {}, alias = {};
 
 	function require(identifier){
-		console.log('====', identifier, cache);
 		return cache[identifier] || (cache[identifier] = module(identifier));
 	}
 
@@ -22,12 +21,12 @@
 		var name, item;
 
 		src = src.split(/\/+/).slice(0, -1);
-		dest = dest.split(/\/+/).filter(function(part){
-			return part !== '.';
-		});
+		dest = dest.split(/\/+/);
 		name = dest.pop();
 
-		dest.forEach(function(part){
+		dest.filter(function(part){
+			return part !== '.';
+		}).forEach(function(part){
 			if(part === '..'){
 				src.pop();
 			}else{
