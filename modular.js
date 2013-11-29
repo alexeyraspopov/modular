@@ -1,7 +1,5 @@
-(function(){
+(function(cache, alias){
 	'use strict';
-	var cache = {}, alias = {};
-
 	function require(identifier){
 		return cache[identifier] || (cache[identifier] = module(identifier));
 	}
@@ -91,4 +89,4 @@
 	}
 
 	setup(document.currentScript.dataset.setup);
-})();
+})({}, {});
