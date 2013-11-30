@@ -16,6 +16,9 @@ module.exports = function(grunt){
 			target: { src: 'modular.js' }
 		},
 		uglify: {
+			options: {
+				report: 'min'
+			},
 			target: {
 				src: 'modular.js',
 				dest: 'modular.min.js'
