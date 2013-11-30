@@ -11,10 +11,6 @@
 		return (/\.json$/.test(path)) ? JSON.parse(code) : compile(code, path);
 	}
 
-	function dir(path){
-		return path.replace(/\/[^\/]+$/, '/');
-	}
-
 	function resolve(src, dest){
 		var name, item;
 
