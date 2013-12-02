@@ -1,7 +1,7 @@
 (function(cache, alias){
 	'use strict';
-	function require(identifier){
-		return cache[identifier] || (cache[identifier] = module(identifier));
+	function require(id){
+		return cache[id] || (cache[id] = module(id));
 	}
 
 	function module(path){
@@ -39,8 +39,8 @@
 	}
 
 	function injection(path){
-		return function(identifier){
-			return require(alias[identifier] || resolve(path, extension(identifier)));
+		return function(id){
+			return require(alias[id] || resolve(path, extension(id)));
 		};
 	}
 
@@ -73,8 +73,8 @@
 	}
 
 	function setupAliases(map){
-		Object.keys(map).forEach(function(identifier){
-			alias[identifier] = extension(map[identifier]);
+		Object.keys(map).forEach(function(id){
+			alias[id] = extension(map[id]);
 		});
 	}
 
