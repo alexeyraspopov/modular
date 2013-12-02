@@ -7,12 +7,17 @@
 	function module(path){
 		var code = load(path);
 
-		// IDEA: use map for assicate extension with compile function
+		// IDEA: use map for associate extension with compile function
 		return (/\.json$/.test(path)) ? JSON.parse(code) : compile(code, path);
 	}
 
+	// TODO: reduce complexity
 	function resolve(src, dest){
 		var name, item;
+
+		if(dest.charAt(0) === '/'){
+			return dest;
+		}
 
 		src = src.split(/\/+/).slice(0, -1);
 		dest = dest.split(/\/+/);
@@ -62,7 +67,7 @@
 	}
 
 	function extension(path){
-		return path.replace(/\/+/g, '/').replace(/(\.\w+$|$)/, function(extension){
+		return path.replace(/(\.\w+$|$)/, function(extension){
 			return extension || '.js';
 		});
 	}
