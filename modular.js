@@ -23,11 +23,13 @@
 	function resolveTerms(src, dest){
 		var name = dest.pop();
 
-		dest.forEach(function(part){
-			if(part === '..'){
+		dest.filter(function(term){
+			return term !== '.';
+		}).forEach(function(term){
+			if(term === '..'){
 				src.pop();
 			}else{
-				src.push(part);
+				src.push(term);
 			}
 		});
 
