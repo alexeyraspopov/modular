@@ -19,6 +19,7 @@
 		return resolveTerms(src.split(/\/+/).slice(0, -1), dest.split(/\/+/));
 	}
 
+	// TODO: use reduce or filter method for better code quality
 	function resolveTerms(src, dest){
 		var name = dest.pop();
 
