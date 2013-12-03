@@ -22,9 +22,7 @@
 	function resolveTerms(src, dest){
 		var name = dest.pop();
 
-		dest.filter(function(part){
-			return part !== '.';
-		}).forEach(function(part){
+		dest.forEach(function(part){
 			if(part === '..'){
 				src.pop();
 			}else{
