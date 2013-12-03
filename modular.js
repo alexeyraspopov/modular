@@ -78,7 +78,7 @@
 
 	function setupAliases(map){
 		Object.keys(map).forEach(function(id){
-			alias[id] = extension(map[id]);
+			alias[id] = resolve('./', extension(map[id]));
 		});
 	}
 
