@@ -16,7 +16,7 @@
 		var name, item;
 
 		if(dest.charAt(0) === '/'){
-			return dest;
+			return dest.slice(1);
 		}
 
 		src = src.split(/\/+/).slice(0, -1);
@@ -38,9 +38,13 @@
 		return src.join('/');
 	}
 
+	function fullPath(id, basePath){
+		return alias[id] || resolve(basePath || './', extension(id));
+	}
+
 	function injection(path){
 		return function(id){
-			return require(alias[id] || resolve(path, extension(id)));
+			return require(fullPath(id, path));
 		};
 	}
 
@@ -79,11 +83,13 @@
 	}
 
 	function setupScripts(list){
-		list.forEach(require);
+		list.forEach(function(id){
+			require(fullPath(id));
+		});
 	}
 
 	function setup(configFile){
-		var config = require(configFile);
+		var config = require(fullPath(configFile));
 
 		setupAliases(config.alias || {});
 		setupScripts(config.start || []);
