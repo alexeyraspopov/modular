@@ -11,17 +11,16 @@
 		return (/\.json$/.test(path)) ? JSON.parse(code) : compile(code, path);
 	}
 
-	// TODO: reduce complexity
 	function resolve(src, dest){
-		var name, item;
-
 		if(dest.charAt(0) === '/'){
 			return dest.slice(1);
 		}
 
-		src = src.split(/\/+/).slice(0, -1);
-		dest = dest.split(/\/+/);
-		name = dest.pop();
+		return resolveTerms(src.split(/\/+/).slice(0, -1), dest.split(/\/+/));
+	}
+
+	function resolveTerms(src, dest){
+		var name = dest.pop();
 
 		dest.filter(function(part){
 			return part !== '.';
