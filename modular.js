@@ -96,4 +96,5 @@
 	}
 
 	setup(document.currentScript.dataset.setup);
+	window.require = require;
 })({}, {});
