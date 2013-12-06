@@ -58,7 +58,7 @@
 		/* jshint evil:true */
 		new Function('require', 'exports', 'module', strict(code, path))(injection(path), module.exports, module);
 
-		return module.exports;
+		return Object.freeze(module.exports);
 	}
 
 	function load(filename){
