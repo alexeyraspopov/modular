@@ -96,5 +96,8 @@
 	}
 
 	setup(document.currentScript.dataset.setup);
-	window.require = require;
+
+	window.require = function(id){
+		return require(fullPath(id));
+	};
 })({}, {});
