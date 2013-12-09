@@ -83,9 +83,7 @@
 	}
 
 	function setupScripts(list){
-		list.forEach(function(id){
-			require(fullPath(id));
-		});
+		list.forEach(injection());
 	}
 
 	function setup(configFile){
@@ -97,7 +95,5 @@
 
 	setup(document.currentScript.dataset.setup);
 
-	window.require = function(id){
-		return require(fullPath(id));
-	};
+	window.require = injection();
 })({}, {});
