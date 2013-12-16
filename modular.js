@@ -93,7 +93,7 @@
 		setupScripts(config.start || []);
 	}
 
-	setup(document.currentScript.dataset.setup);
+	setup(document.querySelector('script[data-setup]').dataset.setup);
 
 	window.require = injection();
 })({}, {});
