@@ -1,7 +1,7 @@
 {
   "name": "modular",
   "main": "modular.min.js",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "authors": [
     "Alexey Raspopov"
   ],
