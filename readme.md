@@ -2,6 +2,12 @@
 
 Simple [CommonJS Module/1.1](http://wiki.commonjs.org/wiki/Modules/1.1) proposal implementation
 
+## Install
+
+Install via [Bower](http://bower.io/)
+
+    $ bower install modular
+
 ## Setup
 
 Include main script file. Set config file in `data-setup` attribute.
