@@ -25,3 +25,7 @@ Simple config file should consists of aliases list and entry points.
             "./initial.js"
         ]
     }
+
+## License
+
+[MIT License](http://en.wikipedia.org/wiki/MIT_License) (c) Alexey Raspopov
