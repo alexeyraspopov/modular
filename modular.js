@@ -39,7 +39,7 @@
 	}
 
 	function fullPath(id, basePath){
-		return alias[id] || resolve(basePath || './', extension(id));
+		return alias[id] || resolve(basePath || location.pathname, extension(id));
 	}
 
 	function injection(path){
@@ -78,7 +78,7 @@
 
 	function setupAliases(map){
 		Object.keys(map).forEach(function(id){
-			alias[id] = resolve('./', extension(map[id]));
+			alias[id] = resolve(location.pathname, extension(map[id]));
 		});
 	}
 
