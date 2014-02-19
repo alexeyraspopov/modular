@@ -1,6 +1,6 @@
 {
   "name": "modular",
-  "version": "0.4.4",
+  "version": "0.5.0",
   "description": "Simple CommonJS Module/1.1 proposal implementation",
   "repository": {
     "type": "git",
