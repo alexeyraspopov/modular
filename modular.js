@@ -13,7 +13,7 @@
 
 	function resolve(src, dest){
 		if(dest.charAt(0) === '/'){
-			return dest.slice(1);
+			return resolve(location.pathname, dest.slice(1));
 		}
 
 		return resolveTerms(src.split(/\/+/).slice(0, -1), dest.split(/\/+/));
@@ -44,6 +44,7 @@
 
 	function injection(path){
 		return function(id){
+			console.log(id, path);
 			return require(fullPath(id, path));
 		};
 	}
