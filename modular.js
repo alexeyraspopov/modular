@@ -44,7 +44,6 @@
 
 	function injection(path){
 		return function(id){
-			console.log(id, path);
 			return require(fullPath(id, path));
 		};
 	}
