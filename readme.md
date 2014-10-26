@@ -2,6 +2,13 @@
 
 Simple [CommonJS Module/1.1](http://wiki.commonjs.org/wiki/Modules/1.1) proposal implementation
 
+## Features
+
+ * Works in browsers. You don't need to rebuild your project on every change
+ * Dev Tools compatibility. You are able to debug your scripts in browser
+ * You can work with your modules via console (`require` is available in global scope)
+ * You can use config file for Browserify build
+
 ## Install
 
 Install via [Bower](http://bower.io/)
