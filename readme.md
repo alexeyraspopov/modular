@@ -19,7 +19,7 @@ Install via [Bower](http://bower.io/)
 
 Include main script file. Set config file in `data-setup` attribute.
 
-    <script src="path/to/modular.js" data-setup="config.json"></script>
+    <script src="path/to/modular.js" data-setup="modular.json"></script>
 
 Simple config file should consists of aliases list and entry points.
 
